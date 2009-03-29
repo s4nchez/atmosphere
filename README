@@ -1,0 +1,14 @@
+
+Atmosphere generates tag clouds for files (located in source-control or locally).
+
+Example:
+
+  require 'atmosphere'
+  require 'cloud'
+  require 'html_renderer'
+
+  atmosphere = Atmosphere.new("svn list -R <some-repo> --username <user> --password <pass>")
+  cloud = atmosphere.build_cloud
+  cloud.filter = ["java", "xml", "properties", "txt", "sql", "content"]
+  renderer = HtmlRenderer.new
+  renderer.render(cloud, "repository_cloud.html")
